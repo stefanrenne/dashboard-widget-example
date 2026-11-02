@@ -4,6 +4,8 @@ All user-visible changes. The format follows [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-11-02
+
 ### Added
 - A Reset button: `action` in server.js (widget API 1, dashboard 0.8.0) starts the change again
   from the next value; client.js sends `hd-widget-action` and is disabled while `busy`.
