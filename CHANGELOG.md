@@ -4,6 +4,8 @@ All user-visible changes. The format follows [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-03
+
 ### Changed (breaking)
 - Widget API 2 for Dashboard (formerly Homelab Dashboard, getdashboard.dev): the element is
   `dash-<id>`, the action event `dash-widget-action`, the theme properties `--dash-*`, and examples
