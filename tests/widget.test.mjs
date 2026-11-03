@@ -29,7 +29,7 @@ function ctx(options = {}, cache = new Map()) {
   const defaults = Object.fromEntries(Object.entries(manifest.options).filter(([, d]) => 'default' in d).map(([k, d]) => [k, d.default]));
   const all = { ...defaults, url: `http://127.0.0.1:${api.address().port}/api/`, ...options };
   return {
-    apiVersion: 1,
+    apiVersion: 2,
     instanceId: 'test',
     options: all,
     cache,
@@ -42,7 +42,7 @@ function ctx(options = {}, cache = new Map()) {
 test('the manifest is complete and secrets are marked', () => {
   assert.match(manifest.id, /^[a-z][a-z0-9-]*$/);
   assert.match(manifest.version, /^\d+\.\d+\.\d+$/);
-  assert.equal(manifest.apiVersion, 1);
+  assert.equal(manifest.apiVersion, 2);
   for (const [name, def] of Object.entries(manifest.options)) {
     if (/key|password|token/i.test(name)) assert.equal(def.secret, true, `${name} must be secret`);
   }

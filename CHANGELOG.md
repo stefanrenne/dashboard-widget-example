@@ -4,6 +4,12 @@ All user-visible changes. The format follows [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
+### Changed (breaking)
+- Widget API 2 for Dashboard (formerly Homelab Dashboard, getdashboard.dev): the element is
+  `dash-<id>`, the action event `dash-widget-action`, the theme properties `--dash-*`, and examples
+  use `{{DASHBOARD_VAR_*}}`. The package is `dashboard-widget-example-counter`, the repository
+  `stefanrenne/dashboard-widget-example`. Needs Dashboard 0.19.0.
+
 ## [1.2.0] - 2026-11-02
 
 ### Added

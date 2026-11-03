@@ -1,9 +1,9 @@
 # The manifest of this widget. Reference: docs/widgets/api-reference.md in the dashboard repo
-# (https://github.com/stefanrenne/homelab-dashboard).
+# (https://github.com/stefanrenne/dashboard).
 id: example-counter          # unique, lowercase; becomes "type: example-counter" in services.yaml
 name: Example counter
-version: 1.2.0               # bump on every release, together with the git tag (v1.0.0)
-apiVersion: 1                # the widget API this was written against
+version: 2.0.0               # bump on every release, together with the git tag (v1.0.0)
+apiVersion: 2                # the widget API this was written against
 description: Shows a number from a JSON API, with its change since the last refresh.
 refresh: 30s                 # how long the dashboard caches a result
 options:

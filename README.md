@@ -1,7 +1,7 @@
-# homelab-dashboard widget example
+# Dashboard widget example
 
 A complete, working third-party widget for
-[homelab-dashboard](https://github.com/stefanrenne/homelab-dashboard), set up the way a
+[Dashboard](https://getdashboard.dev), set up the way a
 widget repository should be: manifest, server and client code, translations, tests that run
 without the dashboard, and CI that turns a version tag into a release.
 
@@ -13,7 +13,7 @@ copy the files), then follow [Make it your own](#make-it-your-own).
 ```yaml
 # settings.yaml of the dashboard
 plugins:
-  - source: git+https://github.com/stefanrenne/homelab-dashboard-widget-example#latest
+  - source: git+https://github.com/stefanrenne/dashboard-widget-example#latest
 
 # services.yaml
 - Apps:
@@ -22,7 +22,7 @@ plugins:
         widget:
           type: example-counter
           url: http://app.lan/api/        # the widget reads <url>stats.json
-          key: "{{HD_VAR_APP_KEY}}"       # optional, sent as a Bearer token
+          key: "{{DASHBOARD_VAR_APP_KEY}}"       # optional, sent as a Bearer token
           field: count                    # the number to show (default: count)
         filter: widget.full == false      # optional: hide the card until the number reaches max
 ```
@@ -37,7 +37,7 @@ Pin a release with `#v1.0.0` instead.
 |---|---|---|
 | `widget.yaml` | yes | Manifest: id, version, apiVersion, refresh, options schema, public attributes |
 | `server.js` | no | Fetches the data on the server; may use secret options |
-| `client.js` | no | Custom rendering as a Web Component `hd-<id>`; without it the dashboard renders `blocks` |
+| `client.js` | no | Custom rendering as a Web Component `dash-<id>`; without it the dashboard renders `blocks` |
 | `i18n.json` | no | Labels per language (`en`, `nl`, `fr`, `de`, `es`) |
 | `assets/` | no | Static files for `client.js`, served at `/widgets/<id>/assets/` |
 | `tests/` | | `node:test` against a fake API, through the same `ctx` the dashboard passes |
@@ -50,7 +50,7 @@ Pin a release with `#v1.0.0` instead.
 
 1. Pick a unique id (lowercase, it becomes `type:` in `services.yaml`) and run
    `npm run rename -- <id> --name "Display name"`: it renames `example-counter` in
-   `widget.yaml`, `client.js` (`hd-<id>`), `package.json`, this README and the tests. Two widgets
+   `widget.yaml`, `client.js` (`dash-<id>`), `package.json`, this README and the tests. Two widgets
    with the same id cannot both be installed: the dashboard keeps the first.
 2. Set `name`, `description` and the `options`. Mark every key, token or password
    `secret: true`: secret options reach `server.js` only, never the browser.
@@ -76,7 +76,7 @@ plugins:
 
 A widget of your own wins over one with the same id from the dashboard's default collection.
 The dashboard watches its config folder, not your widget: after a change to the widget, save a
-config file or `curl -X POST -H 'X-Requested-With: homelab-dashboard' localhost:3000/api/plugins/sync`,
+config file or `curl -X POST -H 'X-Requested-With: dashboard' localhost:3000/api/plugins/sync`,
 and the changed files load again.
 
 ```bash
@@ -105,8 +105,8 @@ PRs wait for a manual merge.
 
 ## Reference
 
-- [Writing a widget](https://github.com/stefanrenne/homelab-dashboard/blob/main/docs/widgets/authoring.md)
-- [Widget API reference](https://github.com/stefanrenne/homelab-dashboard/blob/main/docs/widgets/api-reference.md)
-- [Security model](https://github.com/stefanrenne/homelab-dashboard/blob/main/docs/widgets/security.md)
-- [homelab-dashboard-widgets](https://github.com/stefanrenne/homelab-dashboard-widgets): twelve
+- [Writing a widget](https://getdashboard.dev/extend/local.html)
+- [Widget API reference](https://getdashboard.dev/extend/api-reference.html)
+- [Security model](https://getdashboard.dev/extend/security.html)
+- [dashboard-widgets](https://github.com/stefanrenne/dashboard-widgets): twelve
   real widgets (Radarr, Sonarr, Unraid, ...) in one collection.
