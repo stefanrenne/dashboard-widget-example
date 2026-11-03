@@ -61,7 +61,7 @@ Pin a release with `#v1.0.0` instead.
    Delete `client.js` if the standard blocks are enough.
 5. Optionally publish `attributes`: public values (boolean, number, string or null) declared under
    `attributes:` in `widget.yaml` and returned as `attributes` from `fetch`, so users can
-   [hide a service's card](https://getdashboard.dev/configuration/services.html#filtering-services)
+   [hide a service's card](https://getdashboard.dev/configuration/filters.html)
    with `filter:` (`filter: widget.full == false`). The dashboard keeps only declared names of
    the declared type; never put a secret in one.
 6. Update `package.json` (name, repository) and this README.
